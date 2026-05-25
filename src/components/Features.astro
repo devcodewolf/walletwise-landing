@@ -1,0 +1,175 @@
+---
+// Features section - grid of 6 feature cards
+---
+
+<section class="features" id="features" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="features-header" data-reveal>
+      <h2 id="features-heading" class="section-heading">
+        Todo lo que necesitas para<br />
+        <span class="gradient-text">gestionar tu dinero</span>
+      </h2>
+      <p class="section-subtitle">
+        Herramientas diseñadas para darte claridad y control total sobre tus finanzas personales, sin complicaciones.
+      </p>
+    </div>
+
+    <div class="features-grid" data-reveal-stagger>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+            <line x1="10" y1="6.5" x2="14" y2="6.5"/>
+            <line x1="6.5" y1="10" x2="6.5" y2="14"/>
+            <line x1="17.5" y1="10" x2="17.5" y2="14"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Dashboard interactivo</h3>
+        <p class="feature-desc">Visión general de tus finanzas con balance mensual, gráficos y transacciones recientes en un solo vistazo.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1v22"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Gestión de transacciones</h3>
+        <p class="feature-desc">Registra ingresos y gastos con categorías, añade notas y mantén un historial completo de cada movimiento.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Estadísticas y gráficos</h3>
+        <p class="feature-desc">Visualiza tus patrones de gasto con gráficos interactivos: vistas anuales, mensuales y por categoría.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Múltiples billeteras</h3>
+        <p class="feature-desc">Gestiona varias cuentas independientes con saldos separados. Ideal para separar ahorros, gastos y presupuestos.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Transacciones recurrentes</h3>
+        <p class="feature-desc">Automatiza gastos fijos como alquiler, suscripciones y facturas con alertas que te avisan antes del vencimiento.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2"/>
+            <path d="M12 21v2"/>
+            <path d="M4.22 4.22l1.42 1.42"/>
+            <path d="M18.36 18.36l1.42 1.42"/>
+            <path d="M1 12h2"/>
+            <path d="M21 12h2"/>
+            <path d="M4.22 19.78l1.42-1.42"/>
+            <path d="M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Temas personalizables</h3>
+        <p class="feature-desc">Alterna entre modo claro y oscuro según tu preferencia. La interfaz se adapta para una experiencia visual cómoda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 6rem 1.5rem;
+  }
+
+  .features-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .feature-card {
+    padding: 1.75rem;
+    border-radius: 0.875rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    transition: all 0.25s ease;
+    cursor: default;
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-surface);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.5rem;
+    color: var(--color-text);
+  }
+
+  .feature-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .features {
+      padding: 4rem 1rem;
+    }
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .features-header {
+      margin-bottom: 2.5rem;
+    }
+  }
+</style>
