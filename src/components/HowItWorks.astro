@@ -1,5 +1,6 @@
 ---
-// HowItWorks section - 3-step horizontal timeline with animated connectors
+// HowItWorks section — Vercel/Vite modern style
+// Gradient borders, shimmer connectors, micro-interactions, staggered entrance
 ---
 
 <section class="how" id="how-it-works" aria-labelledby="how-heading">
@@ -18,6 +19,8 @@
       <div class="step">
         <div class="step-number" aria-hidden="true">01</div>
         <div class="step-card">
+          <!-- Gradient border glow effect -->
+          <div class="step-card-border" aria-hidden="true"></div>
           <div class="step-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -30,14 +33,19 @@
         </div>
       </div>
 
+      <!-- Connector 1→2 -->
       <div class="step-connector" aria-hidden="true">
-        <div class="connector-line"></div>
+        <div class="connector-line">
+          <div class="connector-shimmer"></div>
+          <div class="connector-dot"></div>
+        </div>
       </div>
 
       <!-- Step 2 -->
       <div class="step">
         <div class="step-number" aria-hidden="true">02</div>
         <div class="step-card">
+          <div class="step-card-border" aria-hidden="true"></div>
           <div class="step-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="12" y1="1" x2="12" y2="23"/>
@@ -49,14 +57,19 @@
         </div>
       </div>
 
+      <!-- Connector 2→3 -->
       <div class="step-connector" aria-hidden="true">
-        <div class="connector-line"></div>
+        <div class="connector-line">
+          <div class="connector-shimmer"></div>
+          <div class="connector-dot"></div>
+        </div>
       </div>
 
       <!-- Step 3 -->
       <div class="step">
         <div class="step-number" aria-hidden="true">03</div>
         <div class="step-card">
+          <div class="step-card-border" aria-hidden="true"></div>
           <div class="step-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -81,12 +94,13 @@
     margin-bottom: 5rem;
   }
 
+  /* ── Steps grid ── */
   .how-steps {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     gap: 0;
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
@@ -95,119 +109,227 @@
     text-align: center;
     padding: 0 1rem;
     position: relative;
+    /* Sibling dimming: all steps fade when the container is hovered... */
+    transition: opacity 0.35s ease;
   }
 
-  /* Big step number — Linear style */
+  /* ...but the hovered one stays bright */
+  .how-steps:hover .step {
+    opacity: 0.55;
+  }
+  .how-steps:hover .step:hover {
+    opacity: 1;
+  }
+
+  /* ── Step number — gradient text, big and bold ── */
   .step-number {
     font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 3.75rem;
+    font-weight: 800;
     letter-spacing: -0.06em;
-    color: var(--color-border);
-    margin: 0 0 1rem;
     line-height: 1;
-    transition: color 0.3s ease;
+    margin: 0 0 1rem;
+    /* Gradient: accent → cyan */
+    background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.5;
+    transition: opacity 0.35s ease, transform 0.3s ease;
+    transform: translateY(0);
   }
 
   .step:hover .step-number {
-    color: var(--color-accent);
-    opacity: 0.6;
+    opacity: 1;
+    transform: translateY(-4px);
   }
 
+  /* ── Step card — gradient border that glows on hover ── */
   .step-card {
-    padding: 1.75rem 1.25rem;
-    border-radius: 0.375rem;
+    position: relative;
+    padding: 1.75rem 1.5rem;
+    border-radius: 0.75rem;
     background: var(--color-bg-card);
     box-shadow: 0 0 0 1px var(--color-border);
-    transition: background 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    transition: background 0.3s ease, box-shadow 0.35s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
-    position: relative;
   }
 
-  .step-card::before {
-    content: '';
+  /* Gradient border overlay */
+  .step-card-border {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(ellipse at 50% 0%, rgba(52,211,153,0.06) 0%, transparent 55%);
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(52,211,153,0.4) 0%,
+      rgba(6,182,212,0.4) 50%,
+      rgba(52,211,153,0.4) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s ease;
     pointer-events: none;
   }
 
   .step:hover .step-card {
     background: var(--color-surface);
-    box-shadow: 0 0 0 1px rgba(52,211,153,0.18), 0 4px 12px rgba(0,0,0,0.06);
-    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px rgba(52,211,153,0.25),
+      0 8px 32px rgba(52,211,153,0.08),
+      0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-6px);
   }
 
-  .step:hover .step-card::before {
+  .step:hover .step-card-border {
     opacity: 1;
   }
 
+  /* Inner radial glow on hover */
+  .step-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 50% 0%, rgba(52,211,153,0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .step:hover .step-card::after {
+    opacity: 1;
+  }
+
+  /* ── Step icon ── */
   .step-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 0.375rem;
-    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    width: 52px;
+    height: 52px;
+    border-radius: 0.625rem;
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
     color: var(--color-accent);
     margin: 0 auto 1rem;
-    transition: all 0.2s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
   }
 
   .step:hover .step-icon {
-    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+    color: #5eead4;
+    transform: scale(1.08);
+    box-shadow: 0 0 24px rgba(52,211,153,0.15);
   }
 
+  .step-icon svg {
+    transition: transform 0.3s ease;
+  }
+
+  .step:hover .step-icon svg {
+    transform: scale(1.05);
+  }
+
+  /* ── Step title ── */
   .step-title {
     font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.0625rem;
+    font-weight: 650;
     letter-spacing: -0.025em;
-    margin: 0 0 0.375rem;
+    margin: 0 0 0.5rem;
     color: var(--color-text);
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
   }
 
+  .step:hover .step-title {
+    color: #5eead4;
+  }
+
+  /* ── Step description ── */
   .step-desc {
-    font-size: 0.8125rem;
-    line-height: 1.55;
+    font-size: 0.84375rem;
+    line-height: 1.6;
     color: var(--color-text-secondary);
     margin: 0;
     letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
   }
 
-  /* Animated connectors */
+  .step:hover .step-desc {
+    color: var(--color-text);
+  }
+
+  /* ── Animated connectors ── */
   .step-connector {
     display: flex;
     align-items: flex-start;
-    padding-top: 1.75rem;
+    padding-top: 2rem;
     flex-shrink: 0;
-    width: 40px;
+    width: 50px;
     position: relative;
   }
 
   .connector-line {
     width: 100%;
-    height: 1.5px;
+    height: 2px;
     background: var(--color-border);
-    border-radius: 1px;
+    border-radius: 2px;
     position: relative;
     overflow: hidden;
   }
 
-  /* Animated green pulse through the connector */
-  .connector-line::after {
-    content: '';
+  /* Shimmer pulse sweeping through */
+  .connector-shimmer {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-    transform: translateX(-100%);
-    animation: shimmer 2.5s ease-in-out infinite;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(52,211,153,0.5) 20%,
+      rgba(6,182,212,0.5) 50%,
+      rgba(52,211,153,0.5) 80%,
+      transparent 100%
+    );
+    animation: connector-shimmer 3s ease-in-out infinite;
+    opacity: 0.7;
   }
 
+  /* Glowing dot traveling along the connector */
+  .connector-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 8px rgba(52,211,153,0.6), 0 0 16px rgba(52,211,153,0.3);
+    animation: connector-dot-travel 3s ease-in-out infinite;
+  }
+
+  @keyframes connector-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes connector-dot-travel {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  /* ── Responsive: vertical on mobile ── */
   @media (max-width: 768px) {
     .how-steps {
       flex-direction: column;
@@ -216,44 +338,69 @@
     }
 
     .step {
-      max-width: 360px;
+      max-width: 400px;
       padding: 0.5rem 0;
       width: 100%;
     }
 
     .step-number {
-      font-size: 2.25rem;
+      font-size: 2.75rem;
       margin-bottom: 0.75rem;
     }
 
     .step-connector {
-      width: 1.5px;
-      height: 28px;
+      width: 2px;
+      height: 32px;
       padding: 0;
       display: flex;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .connector-line {
-      width: 1.5px;
+      width: 2px;
       height: 100%;
     }
 
-    .connector-line::after {
-      background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
-      transform: translateY(-100%);
-      animation: shimmer-vertical 2.5s ease-in-out infinite;
+    .connector-shimmer {
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(52,211,153,0.5) 20%,
+        rgba(6,182,212,0.5) 50%,
+        rgba(52,211,153,0.5) 80%,
+        transparent 100%
+      );
+      animation-name: connector-shimmer-vertical;
+    }
+
+    .connector-dot {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-name: connector-dot-travel-vertical;
     }
   }
 
-  @keyframes shimmer-vertical {
+  @keyframes connector-shimmer-vertical {
     0% { transform: translateY(-100%); }
-    100% { transform: translateY(200%); }
+    100% { transform: translateY(100%); }
+  }
+
+  @keyframes connector-dot-travel-vertical {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
   }
 
   @media (max-width: 640px) {
     .how {
       padding: 4.5rem 1rem;
+    }
+
+    .step-number {
+      font-size: 2.25rem;
     }
   }
 </style>

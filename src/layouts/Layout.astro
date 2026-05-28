@@ -51,10 +51,9 @@ const {
       window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
     };
 
-    // Theme: apply stored or system preference before paint
+    // Theme: apply stored preference, default to dark
     const stored = localStorage.getItem('ww-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = stored || (prefersDark ? 'dark' : 'light');
+    const theme = stored || 'dark';
     document.documentElement.classList.toggle('dark', theme === 'dark');
     document.documentElement.classList.toggle('light', theme === 'light');
     

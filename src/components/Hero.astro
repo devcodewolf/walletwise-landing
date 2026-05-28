@@ -1,5 +1,5 @@
 ---
-// Hero section - Linear/Vercel inspired with animated background
+// Hero section - Vercel/Vite inspired with dramatic animated background
 import AnimatedBackground from './AnimatedBackground.tsx';
 import AnimatedLogo from './AnimatedLogo.tsx';
 import AnimatedOrb from './AnimatedOrb.tsx';
@@ -9,15 +9,20 @@ import AnimatedOrb from './AnimatedOrb.tsx';
   <!-- Canvas particle background -->
   <AnimatedBackground client:visible />
 
-  <!-- Morphing gradient orb -->
+  <!-- Primary morphing gradient orb (center) -->
   <div class="hero-orb-wrapper" aria-hidden="true">
     <AnimatedOrb client:visible />
   </div>
 
-  <!-- Gradient orbs -->
+  <!-- Secondary orb for depth (offset top-right) -->
+  <div class="hero-orb-wrapper-secondary" aria-hidden="true">
+    <AnimatedOrb client:visible />
+  </div>
+
+  <!-- Static gradient orbs for ambient glow -->
   <div class="hero-orb hero-orb--accent" aria-hidden="true"></div>
   <div class="hero-orb hero-orb--cyan" aria-hidden="true"></div>
-  
+
   <div class="hero-content">
     <div class="stagger-children">
       <!-- Animated logo -->
@@ -29,11 +34,11 @@ import AnimatedOrb from './AnimatedOrb.tsx';
         Toma el control de<br />
         <span class="gradient-text">tu dinero</span>
       </h1>
-      
+
       <p class="hero-subtitle">
         El gestor de finanzas personales que te da claridad total sin complicaciones.
       </p>
-      
+
       <div class="hero-actions">
         <a href="https://wallet-wise.devcodewolf.com" class="btn-primary btn-hero" rel="noopener">
           Empezar ahora
@@ -74,56 +79,73 @@ import AnimatedOrb from './AnimatedOrb.tsx';
     justify-content: center;
     padding: 6rem 1.5rem 5rem;
     overflow: hidden;
+    background: radial-gradient(ellipse at 50% 50%, rgba(52,211,153,0.03) 0%, transparent 70%);
   }
 
+  /* Primary orb wrapper — large, centered */
   .hero-orb-wrapper {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 700px;
-    height: 700px;
+    width: 850px;
+    height: 850px;
     pointer-events: none;
     z-index: 0;
+    opacity: 0.85;
   }
 
-  /* Gradient orbs */
+  /* Secondary orb — offset, smaller, for depth layering */
+  .hero-orb-wrapper-secondary {
+    position: absolute;
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+    filter: blur(10px);
+  }
+
+  /* Static gradient orbs */
   .hero-orb {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    filter: blur(100px);
+    filter: blur(120px);
     z-index: 0;
   }
 
   .hero-orb--accent {
-    top: 10%;
-    left: 50%;
+    top: 5%;
+    left: 45%;
     transform: translateX(-50%);
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, var(--color-glow) 0%, transparent 60%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(52,211,153,0.12) 0%, transparent 65%);
     animation: pulse-glow 5s ease-in-out infinite;
-    opacity: 0.5;
+    opacity: 0.45;
   }
 
   .hero-orb--cyan {
-    bottom: -10%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 60%);
-    animation: pulse-glow 6s ease-in-out infinite 2s;
-    opacity: 0.4;
+    bottom: -15%;
+    right: -5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 65%);
+    animation: pulse-glow 7s ease-in-out infinite 3s;
+    opacity: 0.35;
   }
-  
+
   .hero-content {
     position: relative;
     z-index: 1;
     text-align: center;
     max-width: 800px;
   }
-  
+
   .hero-title {
     font-family: var(--font-display);
     font-size: clamp(2.75rem, 7vw + 0.5rem, 5rem);
@@ -133,7 +155,7 @@ import AnimatedOrb from './AnimatedOrb.tsx';
     color: var(--color-text);
     margin: 0 0 1.25rem;
   }
-  
+
   .hero-subtitle {
     font-size: clamp(1rem, 1.5vw + 0.5rem, 1.1875rem);
     line-height: 1.5;
@@ -142,7 +164,7 @@ import AnimatedOrb from './AnimatedOrb.tsx';
     margin: 0 auto 2.5rem;
     letter-spacing: -0.02em;
   }
-  
+
   .hero-actions {
     display: flex;
     align-items: center;
@@ -198,12 +220,13 @@ import AnimatedOrb from './AnimatedOrb.tsx';
     font-size: 0.625rem;
     user-select: none;
   }
-  
+
   @media (max-width: 640px) {
     .hero { padding: 5rem 1rem 4rem; min-height: auto; }
-    .hero-orb-wrapper { width: 350px; height: 350px; }
-    .hero-orb--accent { width: 350px; height: 350px; top: 5%; }
-    .hero-orb--cyan { width: 250px; height: 250px; }
+    .hero-orb-wrapper { width: 400px; height: 400px; }
+    .hero-orb-wrapper-secondary { width: 250px; height: 250px; top: 70%; left: 80%; }
+    .hero-orb--accent { width: 400px; height: 400px; top: 0; }
+    .hero-orb--cyan { width: 300px; height: 300px; }
     .trust-bar { flex-direction: column; gap: 0.375rem; }
   }
 </style>
