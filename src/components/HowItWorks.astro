@@ -1,11 +1,11 @@
 ---
-// HowItWorks section - 3-step horizontal timeline
+// HowItWorks section - 3-step horizontal timeline with animated connectors
 ---
 
 <section class="how" id="how-it-works" aria-labelledby="how-heading">
   <div class="container">
     <div class="how-header" data-reveal>
-      <h2 id="how-heading" class="section-heading">
+      <h2 id="how-heading" class="section-heading heading-glow">
         Empieza en <span class="gradient-text">tres pasos</span>
       </h2>
       <p class="section-subtitle">
@@ -14,54 +14,57 @@
     </div>
 
     <div class="how-steps" data-reveal-stagger>
+      <!-- Step 1 -->
       <div class="step">
-        <div class="step-number" aria-hidden="true">
-          <span>1</span>
+        <div class="step-number" aria-hidden="true">01</div>
+        <div class="step-card">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <polyline points="17 11 19 13 23 9"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Crea tu cuenta</h3>
+          <p class="step-desc">Regístrate en segundos con tu email. Sin datos bancarios, sin complicaciones. Solo tú y tus finanzas.</p>
         </div>
-        <div class="step-icon" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="8.5" cy="7" r="4"/>
-            <polyline points="17 11 19 13 23 9"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Crea tu cuenta</h3>
-        <p class="step-desc">Regístrate en segundos con tu email. Sin datos bancarios, sin complicaciones. Solo tú y tus finanzas.</p>
       </div>
 
       <div class="step-connector" aria-hidden="true">
         <div class="connector-line"></div>
       </div>
 
+      <!-- Step 2 -->
       <div class="step">
-        <div class="step-number" aria-hidden="true">
-          <span>2</span>
+        <div class="step-number" aria-hidden="true">02</div>
+        <div class="step-card">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Registra tus movimientos</h3>
+          <p class="step-desc">Añade ingresos y gastos con categorías. Un par de clics y tu historial financiero empieza a tomar forma.</p>
         </div>
-        <div class="step-icon" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="1" x2="12" y2="23"/>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Registra tus movimientos</h3>
-        <p class="step-desc">Añade ingresos y gastos con categorías. Un par de clics y tu historial financiero empieza a tomar forma.</p>
       </div>
 
       <div class="step-connector" aria-hidden="true">
         <div class="connector-line"></div>
       </div>
 
+      <!-- Step 3 -->
       <div class="step">
-        <div class="step-number" aria-hidden="true">
-          <span>3</span>
+        <div class="step-number" aria-hidden="true">03</div>
+        <div class="step-card">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Toma el control</h3>
+          <p class="step-desc">Visualiza tus patrones, detecta fugas de dinero y optimiza tus gastos con gráficos claros y estadísticas detalladas.</p>
         </div>
-        <div class="step-icon" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Toma el control</h3>
-        <p class="step-desc">Visualiza tus patrones, detecta fugas de dinero y optimiza tus gastos con gráficos claros y estadísticas detalladas.</p>
       </div>
     </div>
   </div>
@@ -69,13 +72,13 @@
 
 <style>
   .how {
-    padding: 6rem 1.5rem;
+    padding: 7rem 1.5rem;
     position: relative;
   }
 
   .how-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
 
   .how-steps {
@@ -83,7 +86,7 @@
     align-items: flex-start;
     justify-content: center;
     gap: 0;
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
   }
 
@@ -94,69 +97,115 @@
     position: relative;
   }
 
+  /* Big step number — Linear style */
   .step-number {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-cyan));
-    color: #0f172a;
     font-family: var(--font-display);
+    font-size: 3rem;
     font-weight: 700;
-    font-size: 1.125rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
+    letter-spacing: -0.06em;
+    color: var(--color-border);
+    margin: 0 0 1rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+  }
+
+  .step:hover .step-number {
+    color: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  .step-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 0.375rem;
+    background: var(--color-bg-card);
+    box-shadow: 0 0 0 1px var(--color-border);
+    transition: background 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .step-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 50% 0%, rgba(52,211,153,0.06) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .step:hover .step-card {
+    background: var(--color-surface);
+    box-shadow: 0 0 0 1px rgba(52,211,153,0.18), 0 4px 12px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+
+  .step:hover .step-card::before {
+    opacity: 1;
   }
 
   .step-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 1rem;
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
+    width: 48px;
+    height: 48px;
+    border-radius: 0.375rem;
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
     color: var(--color-accent);
-    margin: 0 auto 1.25rem;
-    transition: all 0.25s ease;
+    margin: 0 auto 1rem;
+    transition: all 0.2s ease;
   }
 
   .step:hover .step-icon {
-    border-color: var(--color-border-hover);
-    box-shadow: 0 0 20px var(--color-glow);
+    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
   }
 
   .step-title {
     font-family: var(--font-display);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
-    letter-spacing: -0.015em;
-    margin: 0 0 0.5rem;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.375rem;
     color: var(--color-text);
   }
 
   .step-desc {
-    font-size: 0.875rem;
-    line-height: 1.6;
+    font-size: 0.8125rem;
+    line-height: 1.55;
     color: var(--color-text-secondary);
     margin: 0;
+    letter-spacing: -0.01em;
   }
 
+  /* Animated connectors */
   .step-connector {
     display: flex;
     align-items: flex-start;
-    padding-top: 2.5rem;
+    padding-top: 1.75rem;
     flex-shrink: 0;
-    width: 48px;
+    width: 40px;
+    position: relative;
   }
 
   .connector-line {
     width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-border), var(--color-accent), var(--color-border));
+    height: 1.5px;
+    background: var(--color-border);
     border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated green pulse through the connector */
+  .connector-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2.5s ease-in-out infinite;
   }
 
   @media (max-width: 768px) {
@@ -167,28 +216,44 @@
     }
 
     .step {
-      max-width: 320px;
-      padding: 1.5rem 0;
+      max-width: 360px;
+      padding: 0.5rem 0;
+      width: 100%;
+    }
+
+    .step-number {
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
     }
 
     .step-connector {
-      width: 2px;
-      height: 40px;
+      width: 1.5px;
+      height: 28px;
       padding: 0;
       display: flex;
       justify-content: center;
     }
 
     .connector-line {
-      width: 2px;
+      width: 1.5px;
       height: 100%;
-      background: linear-gradient(180deg, var(--color-border), var(--color-accent), var(--color-border));
     }
+
+    .connector-line::after {
+      background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
+      transform: translateY(-100%);
+      animation: shimmer-vertical 2.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes shimmer-vertical {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
   }
 
   @media (max-width: 640px) {
     .how {
-      padding: 4rem 1rem;
+      padding: 4.5rem 1rem;
     }
   }
 </style>
